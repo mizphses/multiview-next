@@ -55,6 +55,10 @@ def logout():
 
 @app.route('/create', methods=['POST'])
 def create():
+    if os.path.exists('token.json'):
+        auth = True
+    else:
+        auth = False
     creds = login()
     service = discovery.build('sheets', 'v4', credentials=creds)
     file_url = request.form['file_url']
@@ -64,7 +68,7 @@ def create():
     htmls = []
     for i in range(len(sheet)):
         htmls.append([downloader(login(), sheet[i][1][40:-12]), sheet[i][0], sheet[i][1]])
-    return render_template('views.html', htmls = htmls)
+    return render_template('views.html', htmls = htmls, auth = auth)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(host="localhost", debug=False, port=50000)

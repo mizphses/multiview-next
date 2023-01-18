@@ -37,15 +37,16 @@
       {% endif %}
     </div>
     <div class="p-2 leading-10">
-      <p>MultiView Nextは飯尾淳中央大学教授のMultiViewから着想を得て, CORS等をできる限り考えなくて良いようGoogle Drive APIを活用しGoogle Colaboratory（厳密にはJupyter Notebookファイル）を並べて閲覧できるようにしたものです。</p>
+      <p>MultiView Nextは飯尾淳教授のMultiViewから着想を得て, Google Drive APIを活用し取得したGoogle ColaboratoryのNotebookファイルを自らレンダリングすることでCORS等をできる限り考えず並べて閲覧できるようにしたものです。</p>
+      <p>実装の中身とかは<a href="https://zenn.dev/natom_nano/articles/333889f8baba59" class="border-b-2 text-blue-700">この記事</a>を参照</p>
       {% if auth %}
-        <p>定義ファイルを作成します。</p>
+        <p><a href="https://docs.google.com/spreadsheets/d/180W5hvWi1CADaKhcjZZwgrI5bvHrOPCXJYdTTeRTZXY/edit?usp=sharing" target="_blank" class="border-b-2 text-blue-700">このリンク先のファイル（https://docs.google.com/spreadsheets/d/180W5hvWi1CADaKhcjZZwgrI5bvHrOPCXJYdTTeRTZXY/edit?usp=sharing）</a>をもとにアクセス先の一覧を作成してください。</p>
         <form action="/create" method="post">
           <input type="url" name="file_url" placeholder="定義ファイルのURL" class="border-b-2 border-black w-2/3">
           <input type="submit" value="作成" class="py-1 px-5 rounded border-2 bg-gray-100 hover:bg-gray-400">
         </form>
       {% else %}
-        <a class="p-2 rounded bg-green-300 hover:bg-green-400" href="/login">まずはログインから始めましょう</a>
+        <a class="p-2 rounded bg-yellow-300 hover:bg-yellow-400" href="/login">まずはログインから始めましょう</a>
       {% endif %}
       </div>
   </body>
